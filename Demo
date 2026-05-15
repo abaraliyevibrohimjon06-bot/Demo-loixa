@@ -1,0 +1,142 @@
+export default function AIFoodAppDemo() { const restaurants = [ { name: "Tokyo Grill", category: "Japanese Food", rating: "4.9", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop", }, { name: "Black Burger", category: "Fast Food", rating: "4.7", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop", }, { name: "Aura Sushi", category: "Premium Sushi", rating: "4.8", image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=1200&auto=format&fit=crop", }, ];
+
+const aiButtons = [ "🍳 Bugun nima yesam?", "🥤 Nima ichsam bo'ladi?", "🔥 Achchiq ovqat", "💪 Proteinli ovqat", "🍰 Shirinlik", "🏠 Uyda tayyorlash", ];
+
+const recipes = [ { title: "Quick Egg Toast", time: "10 min", image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=1200&auto=format&fit=crop", }, { title: "Creamy Ramen", time: "18 min", image: "https://images.unsplash.com/photo-1617093727343-374698b1b08d?q=80&w=1200&auto=format&fit=crop", }, ];
+
+return ( <div className="min-h-screen bg-black text-white font-sans pb-28"> {/* Header */} <div className="sticky top-0 z-50 backdrop-blur-xl bg-black/70 border-b border-white/10 px-5 py-4 flex items-center justify-between"> <div> <h1 className="text-2xl font-bold tracking-tight">AI Food</h1> <p className="text-xs text-zinc-500 mt-1"> Smart food recommendations </p> </div>
+
+<div className="w-11 h-11 rounded-2xl bg-zinc-900 border border-white/10 flex items-center justify-center text-lg shadow-lg shadow-white/5">
+      🤖
+    </div>
+  </div>
+
+  {/* Hero */}
+  <div className="px-5 pt-5">
+    <div className="rounded-3xl overflow-hidden relative h-52 border border-white/10">
+      <img
+        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop"
+        className="w-full h-full object-cover"
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+
+      <div className="absolute bottom-0 left-0 p-5">
+        <p className="text-sm text-zinc-400 mb-2">AI Recommendation</p>
+        <h2 className="text-3xl font-bold leading-tight max-w-xs">
+          Bugun ramen yeyish uchun yaxshi kun 🍜
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  {/* AI Assistant */}
+  <div className="px-5 mt-7">
+    <div className="flex items-center justify-between mb-4">
+      <h3 className="text-xl font-semibold">AI Assistant</h3>
+      <button className="text-sm text-zinc-500">Open</button>
+    </div>
+
+    <div className="grid grid-cols-2 gap-3">
+      {aiButtons.map((item) => (
+        <button
+          key={item}
+          className="bg-zinc-900 border border-white/10 rounded-2xl p-4 text-left hover:bg-zinc-800 transition-all duration-300"
+        >
+          <span className="text-sm font-medium">{item}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  {/* Restaurants */}
+  <div className="px-5 mt-8">
+    <div className="flex items-center justify-between mb-4">
+      <h3 className="text-xl font-semibold">Restaurants</h3>
+      <button className="text-sm text-zinc-500">See all</button>
+    </div>
+
+    <div className="space-y-4">
+      {restaurants.map((item) => (
+        <div
+          key={item.name}
+          className="rounded-3xl overflow-hidden bg-zinc-950 border border-white/10"
+        >
+          <img
+            src={item.image}
+            className="w-full h-44 object-cover"
+          />
+
+          <div className="p-4 flex items-center justify-between">
+            <div>
+              <h4 className="font-semibold text-lg">{item.name}</h4>
+              <p className="text-zinc-500 text-sm mt-1">
+                {item.category}
+              </p>
+            </div>
+
+            <div className="bg-zinc-900 border border-white/10 rounded-xl px-3 py-2 text-sm">
+              ⭐ {item.rating}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Recipes */}
+  <div className="px-5 mt-8">
+    <div className="flex items-center justify-between mb-4">
+      <h3 className="text-xl font-semibold">Cook at Home</h3>
+      <button className="text-sm text-zinc-500">More</button>
+    </div>
+
+    <div className="flex gap-4 overflow-x-auto pb-2">
+      {recipes.map((item) => (
+        <div
+          key={item.title}
+          className="min-w-[220px] rounded-3xl overflow-hidden bg-zinc-950 border border-white/10"
+        >
+          <img
+            src={item.image}
+            className="w-full h-36 object-cover"
+          />
+
+          <div className="p-4">
+            <h4 className="font-semibold">{item.title}</h4>
+            <p className="text-zinc-500 text-sm mt-1">{item.time}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Bottom Nav */}
+  <div className="fixed bottom-0 left-0 right-0 border-t border-white/10 bg-black/90 backdrop-blur-xl px-5 py-4 flex items-center justify-around">
+    <button className="flex flex-col items-center gap-1 text-white">
+      <span className="text-xl">🏠</span>
+      <span className="text-xs">Home</span>
+    </button>
+
+    <button className="flex flex-col items-center gap-1 text-zinc-500">
+      <span className="text-xl">🍽️</span>
+      <span className="text-xs">Orders</span>
+    </button>
+
+    <button className="w-16 h-16 rounded-full bg-white text-black text-2xl -mt-10 shadow-2xl shadow-white/20">
+      🤖
+    </button>
+
+    <button className="flex flex-col items-center gap-1 text-zinc-500">
+      <span className="text-xl">❤️</span>
+      <span className="text-xs">Saved</span>
+    </button>
+
+    <button className="flex flex-col items-center gap-1 text-zinc-500">
+      <span className="text-xl">👤</span>
+      <span className="text-xs">Profile</span>
+    </button>
+  </div>
+</div>
+
+); }
